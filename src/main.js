@@ -1,14 +1,7 @@
-var map;
+import { initMap } from "./mapLoader";
 
-function initMap(){
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {
-            lat: -34.397,
-            lng: 150.644
-        },
-        zoom: 8
-    });
+
+
+module.exports = {
+    initMap
 }
-
-
-module.exports = {initMap};
