@@ -1,7 +1,9 @@
-import { initMap } from "./mapLoader";
+import { initMap, handleLocationError, calculateAndDisplayRoute } from "./mapLoader";
 
 
 
 module.exports = {
-    initMap
+    initMap,
+    handleLocationError,
+    calculateAndDisplayRoute
 }
