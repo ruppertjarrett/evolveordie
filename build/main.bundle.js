@@ -114,9 +114,10 @@ function initMap() {
             };
 
             infoWindow.setPosition(pos);
-            infoWindow.setContent('Your location.');
-            infoWindow.open(map);
+            // infoWindow.setContent('Your location.');
+            // infoWindow.open(map);
             map.setCenter(pos);
+            calculateAndDisplayRoute(directionsService, directionsDisplay, pos.lat, pos.lng);
         }, function () {
             handleLocationError(true, infoWindow, map.getCenter());
         });
@@ -124,7 +125,6 @@ function initMap() {
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     }
-    calculateAndDisplayRoute(directionsService, directionsDisplay, infoWindow.getPosition().lat, infoWindow.getPosition().lng);
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
