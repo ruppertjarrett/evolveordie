@@ -23,8 +23,6 @@ function initMap() {
             };
     
             infoWindow.setPosition(pos);
-            // infoWindow.setContent('Your location.');
-            // infoWindow.open(map);
             map.setCenter(pos);
             calculateAndDisplayRoute(directionsService, directionsDisplay, pos.lat, pos.lng);
         }, function () {
