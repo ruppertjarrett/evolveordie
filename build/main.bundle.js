@@ -75,6 +75,8 @@ var _mapLoader = __webpack_require__(1);
 
 var _slides = __webpack_require__(2);
 
+window.onload = (0, _slides.showSlides)();
+
 module.exports = {
     initMap: _mapLoader.initMap,
     handleLocationError: _mapLoader.handleLocationError,
