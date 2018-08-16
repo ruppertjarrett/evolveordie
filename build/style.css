@@ -140,6 +140,50 @@ body {
     text-align: center;
 }
 
+.black {
+    background-color: #131415;
+    color: white;
+}
+
+.full {
+    width: 100%;
+}
+
+.half {
+    width: 45%;
+    display: inline-block;
+}
+
+.image {
+    width: 35%;
+    height: auto;
+}
+
+.center {
+    padding: 5px;
+    text-align: center;
+}
+
+.marg{
+    margin: 10px;
+}
+
+.backGreen {
+    border-bottom: 4px solid #218f44;
+}
+
+.backBlack {
+    border-bottom: 4px solid #131415;
+}
+
+.sideGreen {
+    border-right: 4px solid #218f44;
+}
+
+.sideBlack {
+    border-left: 4px solid #131415;
+}
+
 .fade {
     -webkit-animation-name: fade;
     -webkit-animation-duration: 2s;
@@ -196,3 +240,41 @@ body {
     color: white;
     text-align: center;
  }
+
+@media screen and (max-width: 550px) {
+    .navBar a:not(:first-child) {
+        display: none;
+    }
+    .navBar a.icon {
+        float: right;
+        display: block;
+    }
+    .non-mobile {
+        display: none;
+    }
+    .half {
+        width: 100%;
+    }
+    .marg {
+        margin: 0px;
+    }
+    .center {
+        padding: 10px 0px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .navBar.responsive {
+        position: relative;
+    }
+    .navBar.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .navBar.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}

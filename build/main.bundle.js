@@ -87,10 +87,15 @@ var mySlideFunction = function mySlideFunction(evt) {
     }
 };
 
+var _slides = __webpack_require__(2);
+
+window.onload = (0, _slides.showSlides)();
+
 module.exports = {
     initMap: _mapLoader.initMap,
     handleLocationError: _mapLoader.handleLocationError,
-    calculateAndDisplayRoute: _mapLoader.calculateAndDisplayRoute
+    calculateAndDisplayRoute: _mapLoader.calculateAndDisplayRoute,
+    showSlides: _slides.showSlides
 };
 
 /***/ }),
@@ -168,6 +173,34 @@ var calculateAndDisplayRoute = function calculateAndDisplayRoute(directionsServi
 exports.initMap = initMap;
 exports.handleLocationError = handleLocationError;
 exports.calculateAndDisplayRoute = calculateAndDisplayRoute;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var slideIndex = 0;
+
+var showSlides = function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+};
+
+exports.showSlides = showSlides;
 
 /***/ })
 /******/ ]);

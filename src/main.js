@@ -1,9 +1,7 @@
-import {
-    initMap,
-    handleLocationError,
-    calculateAndDisplayRoute
-} from "./mapLoader";
+import { initMap, handleLocationError, calculateAndDisplayRoute } from "./mapLoader";
+import { showSlides } from "./slides";
 
+window.onload = showSlides();
 
 
 var hamburger = document.getElementById('ham');
@@ -24,4 +22,5 @@ module.exports = {
     initMap,
     handleLocationError,
     calculateAndDisplayRoute,
+    showSlides
 }
