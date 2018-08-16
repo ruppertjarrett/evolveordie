@@ -178,6 +178,12 @@ body {
     .half {
         width: 100%;
     }
+    .marg {
+        margin: 0px;
+    }
+    .center {
+        padding: 10px 0px;
+    }
 }
 
 @media screen and (max-width: 400px) {
