@@ -1,3 +1,4 @@
+var myLibrary =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -70,23 +71,122 @@
 "use strict";
 
 
+var _mapLoader = __webpack_require__(1);
+
+var _slides = __webpack_require__(2);
+
+window.onload = (0, _slides.showSlides)();
+
+module.exports = {
+    initMap: _mapLoader.initMap,
+    handleLocationError: _mapLoader.handleLocationError,
+    calculateAndDisplayRoute: _mapLoader.calculateAndDisplayRoute,
+    showSlides: _slides.showSlides
+};
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+var map, infoWindow;
 
-var map;
+var initMap = function initMap() {
+    var directionsService = new google.maps.DirectionsService();
+    var directionsDisplay = new google.maps.DirectionsRenderer();
 
-function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {
-            lat: 40.7608,
-            lng: 111.8910
+            lat: 40.644188,
+            lng: -111.952249
         },
-        zoom: 8
+        zoom: 12
     });
-}
+    infoWindow = new google.maps.InfoWindow();
+
+    directionsDisplay.setMap(map);
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            map.setCenter(pos);
+            calculateAndDisplayRoute(directionsService, directionsDisplay, pos.lat, pos.lng);
+        }, function () {
+            handleLocationError(true, infoWindow, map.getCenter());
+        });
+    } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+    }
+};
+
+var handleLocationError = function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
+    infoWindow.open(map);
+};
+
+var calculateAndDisplayRoute = function calculateAndDisplayRoute(directionsService, directionsDisplay, lat, lng) {
+    directionsService.route({
+        origin: new google.maps.LatLng({
+            lat: lat,
+            lng: lng
+        }),
+        destination: {
+            lat: 40.7618,
+            lng: -111.8762
+        },
+        travelMode: 'DRIVING'
+    }, function (response, status) {
+        if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    });
+};
 
 exports.initMap = initMap;
+exports.handleLocationError = handleLocationError;
+exports.calculateAndDisplayRoute = calculateAndDisplayRoute;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var slideIndex = 0;
+
+var showSlides = function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+};
+
+exports.showSlides = showSlides;
 
 /***/ })
 /******/ ]);
