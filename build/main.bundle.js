@@ -73,6 +73,20 @@ var myLibrary =
 
 var _mapLoader = __webpack_require__(1);
 
+var hamburger = document.getElementById('ham');
+hamburger.addEventListener('click', function () {
+    mySlideFunction();
+});
+
+var mySlideFunction = function mySlideFunction(evt) {
+    var x = document.getElementById("myNavBar");
+    if (x.className === "navBar") {
+        x.className += " responsive";
+    } else {
+        x.className = "navBar";
+    }
+};
+
 module.exports = {
     initMap: _mapLoader.initMap,
     handleLocationError: _mapLoader.handleLocationError,
@@ -91,7 +105,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var map, infoWindow;
 
-function initMap() {
+var initMap = function initMap() {
     var directionsService = new google.maps.DirectionsService();
     var directionsDisplay = new google.maps.DirectionsRenderer();
 
@@ -123,15 +137,15 @@ function initMap() {
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     }
-}
+};
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+var handleLocationError = function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
     infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
     infoWindow.open(map);
-}
+};
 
-function calculateAndDisplayRoute(directionsService, directionsDisplay, lat, lng) {
+var calculateAndDisplayRoute = function calculateAndDisplayRoute(directionsService, directionsDisplay, lat, lng) {
     directionsService.route({
         origin: new google.maps.LatLng({
             lat: lat,
@@ -149,7 +163,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, lat, lng
             window.alert('Directions request failed due to ' + status);
         }
     });
-}
+};
 
 exports.initMap = initMap;
 exports.handleLocationError = handleLocationError;
