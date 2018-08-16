@@ -73,10 +73,13 @@ var myLibrary =
 
 var _mapLoader = __webpack_require__(1);
 
+var _slides = __webpack_require__(2);
+
 module.exports = {
     initMap: _mapLoader.initMap,
     handleLocationError: _mapLoader.handleLocationError,
-    calculateAndDisplayRoute: _mapLoader.calculateAndDisplayRoute
+    calculateAndDisplayRoute: _mapLoader.calculateAndDisplayRoute,
+    showSlides: _slides.showSlides
 };
 
 /***/ }),
@@ -91,7 +94,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var map, infoWindow;
 
-function initMap() {
+var initMap = function initMap() {
     var directionsService = new google.maps.DirectionsService();
     var directionsDisplay = new google.maps.DirectionsRenderer();
 
@@ -123,15 +126,15 @@ function initMap() {
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     }
-}
+};
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+var handleLocationError = function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
     infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
     infoWindow.open(map);
-}
+};
 
-function calculateAndDisplayRoute(directionsService, directionsDisplay, lat, lng) {
+var calculateAndDisplayRoute = function calculateAndDisplayRoute(directionsService, directionsDisplay, lat, lng) {
     directionsService.route({
         origin: new google.maps.LatLng({
             lat: lat,
@@ -149,11 +152,39 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, lat, lng
             window.alert('Directions request failed due to ' + status);
         }
     });
-}
+};
 
 exports.initMap = initMap;
 exports.handleLocationError = handleLocationError;
 exports.calculateAndDisplayRoute = calculateAndDisplayRoute;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var slideIndex = 0;
+
+var showSlides = function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+};
+
+exports.showSlides = showSlides;
 
 /***/ })
 /******/ ]);
