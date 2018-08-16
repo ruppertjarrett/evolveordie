@@ -1,0 +1,40 @@
+{
+    "pagination": {
+        "hrefs": {
+            "0": "cod",
+            "1": "lol",
+            "2": "ssb",
+            "3": "cc",
+            "4": "staff"
+        },
+        "names": {
+            "0": "Call of Duty",
+            "1": "League of Legends",
+            "2": "Super Smash Bros.",
+            "3": "Content Creation",
+            "4": "Staff"
+        },
+        "innerClass": "active"
+    },
+    "headings": {
+
+    },
+    "navBar": {
+        "hrefs": {
+            "0": "index",
+            "1": "store",
+            "2": "sponsors",
+            "3": "teams",
+            "4": "location",
+            "5": "javascript:void(0);"
+        },
+        "names": {
+            "0": "Home",
+            "1": "Store",
+            "2": "Sponsors",
+            "3": "Teams",
+            "4": "Location"
+        },
+        "img": "images/logo/EOD LOGO.png"
+    }
+}
