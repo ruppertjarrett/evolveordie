@@ -81,6 +81,11 @@ body {
     text-align: center;
 }
 
+.black {
+    background-color: #131415;
+    color: white;
+}
+
 .full {
     width: 100%;
 }
