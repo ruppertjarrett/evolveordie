@@ -115,17 +115,17 @@ p {
 
 #map {
     height: 90%;
+    z-index: -500;
 }
 
 .logo>img {
     max-height: 30px;
 }
 
-.logo {}
-
 .navBar {
     background-color: #333;
     overflow: hidden;
+    z-index: 1000;
 }
 
 .navBar a {
@@ -154,6 +154,7 @@ p {
 
 .infoContainer {
     display: flex;
+    z-index: -300;
 }
 
 .box {
@@ -168,9 +169,25 @@ p {
     flex-direction: row;
 }
 
+.newDisplay {
+    padding: 5px;
+    text-align: center;
+    background-color: #131415;
+    color: #f2f2f2;
+}
+
+.eventDisplay {
+    padding: 5px;
+    text-align: center;
+    background-color: #131415;
+    color: #f2f2f2;
+}
+.newText:hover{
+    background-color: #218f44;
+}
 .slideshow-container {
     max-width: 700px;
-    position: relative;
+    position: absolute;
     margin: auto;
 }
 
@@ -178,15 +195,10 @@ p {
     display: none;
 }
 
-.text {
-    color: #f2f2f2;
-    font-size: 25px;
-    padding: 10px 15px;
-    position: absolute;
-    bottom: 8px;
-    width: 100%;
-    text-align: center;
+.slideImg {
+    z-index: -500;
 }
+
 
 .black {
     background-color: #131415;
@@ -269,11 +281,25 @@ p {
     border-radius: 3px;
 }
 
+.merchProducts {
+    flex-direction: row;
+}
+
 .merchText {
     font-size: 1.5em;
-    text-align: center;
+    text-align: left;
     margin-bottom: 15px;
     font-weight: bold;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #131415;
+    color: white;
+    text-align: center;
 }
 
 @media screen and (max-width: 550px) {
@@ -283,6 +309,23 @@ p {
     .navBar a.icon {
         float: right;
         display: block;
+    }
+    .navBar.responsive {
+        position: absolute;
+        width: 100%;
+    }
+    .navBar.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .navBar.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+    .footer {
+        font-size: 2vw;
     }
     .non-mobile {
         display: none;
@@ -296,11 +339,15 @@ p {
     .center {
         padding: 10px 0px;
     }
+    .infoContainer {
+        height: 50%;
+        top: 50%;
+    }
 }
 
 @media screen and (max-width: 400px) {
     .navBar.responsive {
-        position: relative;
+        position: absolute;
     }
     .navBar.responsive .icon {
         position: absolute;

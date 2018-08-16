@@ -75,7 +75,23 @@ var _mapLoader = __webpack_require__(1);
 
 var _slides = __webpack_require__(2);
 
-window.onload = (0, _slides.showSlides)();
+if (document.title == "Home") {
+    window.onload = (0, _slides.showSlides)();
+}
+
+var hamburger = document.getElementById('ham');
+hamburger.addEventListener('click', function () {
+    mySlideFunction();
+});
+
+var mySlideFunction = function mySlideFunction(evt) {
+    var x = document.getElementById("myNavBar");
+    if (x.className === "navBar") {
+        x.className += " responsive";
+    } else {
+        x.className = "navBar";
+    }
+};
 
 module.exports = {
     initMap: _mapLoader.initMap,
