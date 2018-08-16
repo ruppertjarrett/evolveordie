@@ -27,44 +27,45 @@ fetch(url)
                     pagination.appendChild(link)
                 }
             }
-            let navBar = document.getElementById('myNavBar')
-            for (var j = 0; j < 6; j++) {
-                if (j == 5) {
-                    var link = document.createElement('a');
-                    link.className = 'icon';
-                    link.id = 'ham';
-                    link.onclick = 'myFunction()';
-                    link.href = data.navBar.hrefs[j];
-                    var icon = document.createElement('i');
-                    icon.className = 'fa fa-bars';
-                    link.appendChild(icon)
-                    navBar.appendChild(link);
-                    var hamburger = document.getElementById('ham');
-                    hamburger.addEventListener('click', function() {
-                        mySlideFunction();
-                    });
-                } else {
-
-                    if (j == 0) {
-                        var link = document.createElement('a');
-                        link.className = 'logo';
-                        var img = document.createElement('img');
-                        img.src = data.navBar.img;
-                        link.appendChild(img);
-                        navBar.appendChild(link);
-                    }
-                    var link = document.createElement('a');
-                    link.href = data.navBar.hrefs[j] + '.html';
-                    link.innerText = data.navBar.names[j];
-                    navBar.appendChild(link);
-                }
+        }
+        let navBar = document.getElementById('myNavBar')
+        for (var j = 0; j < 6; j++) {
+            if (j == 5) {
+                var link = document.createElement('a');
+                link.className = 'icon';
+                link.id = 'ham';
+                link.onclick = 'myFunction()';
+                link.href = data.navBar.hrefs[j];
+                var icon = document.createElement('i');
+                icon.className = 'fa fa-bars';
+                link.appendChild(icon)
+                navBar.appendChild(link);
+                var hamburger = document.getElementById('ham');
+                hamburger.addEventListener('click', function() {
+                    mySlideFunction();
+                });
             }
-        } else {
+            if (j == 0) {
+                var link = document.createElement('a');
+                link.className = 'logo';
+                var img = document.createElement('img');
+                img.src = data.navBar.img;
+                link.appendChild(img);
+                navBar.appendChild(link);
+            }
+            var link = document.createElement('a');
+            link.href = data.navBar.hrefs[j] + '.html';
+            link.innerText = data.navBar.names[j];
+            navBar.appendChild(link);
+        }
+
+        if (document.title = 'SiteMap') {
             let div = document.getElementById('sitemap');
             for (var i = 0; i < 5; i++) {
                 var link = document.createElement('a');
                 link.href = data.navBar.hrefs[i] + '.html';
                 link.innerText = data.navBar.names[i];
+                link.appendChild(document.createElement('br'));
                 if (i == 4) {
                     let holder = document.createElement('div');
                     for (var j = 0; j < 5; j++) {
@@ -72,6 +73,7 @@ fetch(url)
                         span.href = data.pagination.hrefs[j] + '.html';
                         span.innerText = data.pagination.names[j];
                         holder.appendChild(span);
+                        holder.appendChild(document.createElement('br'));
                     }
                     link.appendChild(holder);
                 }
