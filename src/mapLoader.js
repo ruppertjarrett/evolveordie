@@ -1,6 +1,6 @@
 var map, infoWindow;
 
-function initMap() {
+const initMap = () => {
     var directionsService = new google.maps.DirectionsService();
     var directionsDisplay = new google.maps.DirectionsRenderer();
 
@@ -35,7 +35,7 @@ function initMap() {
 
 }
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+const handleLocationError = (browserHasGeolocation, infoWindow, pos) =>{
     infoWindow.setPosition(pos);
     infoWindow.setContent(browserHasGeolocation ?
         'Error: The Geolocation service failed.' :
@@ -43,7 +43,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.open(map);
 }
 
-function calculateAndDisplayRoute(directionsService, directionsDisplay, lat, lng) {
+const calculateAndDisplayRoute = (directionsService, directionsDisplay, lat, lng) => {
     directionsService.route({
         origin: new google.maps.LatLng({
             lat: lat,
