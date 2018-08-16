@@ -73,6 +73,12 @@ var myLibrary =
 
 var _mapLoader = __webpack_require__(1);
 
+var _slides = __webpack_require__(2);
+
+if (document.title == "Home") {
+    window.onload = (0, _slides.showSlides)();
+}
+
 var hamburger = document.getElementById('ham');
 hamburger.addEventListener('click', function () {
     mySlideFunction();
@@ -86,10 +92,6 @@ var mySlideFunction = function mySlideFunction(evt) {
         x.className = "navBar";
     }
 };
-
-var _slides = __webpack_require__(2);
-
-window.onload = (0, _slides.showSlides)();
 
 module.exports = {
     initMap: _mapLoader.initMap,

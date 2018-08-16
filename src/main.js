@@ -1,7 +1,10 @@
 import { initMap, handleLocationError, calculateAndDisplayRoute } from "./mapLoader";
 import { showSlides } from "./slides";
 
-window.onload = showSlides();
+
+if (document.title == "Home"){
+    window.onload = showSlides();
+}
 
 
 var hamburger = document.getElementById('ham');
