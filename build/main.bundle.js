@@ -75,14 +75,90 @@ var _mapLoader = __webpack_require__(1);
 
 var _slides = __webpack_require__(2);
 
+var url = 'site.json';
+fetch(url).then(function (response) {
+    return response.json();
+}).then(function (data) {
+    // let stuff = '';
+    if (document.title != 'SiteMap') {
+        if (document.title == 'Call of Duty' || document.title == 'League of Legends' || document.title == 'Super Smash Bros.' || document.title == 'Staff' || document.title == 'Content Creator' || document.title == 'Teams') {
+            console.log(data);
+            console.log(data.pagination.hrefs[0]);
+            //data.results.forEach()
+            var pagination = document.getElementById('localNav');
+            for (var i = 0; i < 5; i++) {
+                var link = document.createElement('a');
+                link.href = data.pagination.hrefs[i] + '.html';
+                link.className = 'tooltip';
+                var img = document.createElement('img');
+                img.className = 'pagLogo';
+                img.src = 'images/gamelogos/' + data.pagination.hrefs[i] + '.png';
+                link.appendChild(img);
+                var span = document.createElement('span');
+                span.className = 'tooltiptext';
+                span.innerText = data.pagination.names[i];
+                link.appendChild(span);
+                pagination.appendChild(link);
+            }
+        }
+        var navBar = document.getElementById('myNavBar');
+        for (var j = 0; j < 6; j++) {
+            if (j == 5) {
+                var link = document.createElement('a');
+                link.className = 'icon';
+                link.id = 'ham';
+                link.onclick = 'myFunction()';
+                link.href = data.navBar.hrefs[j];
+                var icon = document.createElement('i');
+                icon.className = 'fa fa-bars';
+                link.appendChild(icon);
+                navBar.appendChild(link);
+                var hamburger = document.getElementById('ham');
+                hamburger.addEventListener('click', function () {
+                    mySlideFunction();
+                });
+            } else {
+
+                if (j == 0) {
+                    var link = document.createElement('a');
+                    link.className = 'logo';
+                    var img = document.createElement('img');
+                    img.src = data.navBar.img;
+                    link.appendChild(img);
+                    navBar.appendChild(link);
+                }
+                var link = document.createElement('a');
+                link.href = data.navBar.hrefs[j] + '.html';
+                link.innerText = data.navBar.names[j];
+                navBar.appendChild(link);
+            }
+        }
+    } else {
+        var div = document.getElementById('sitemap');
+        for (var i = 0; i < 5; i++) {
+            var link = document.createElement('a');
+            link.href = data.navBar.hrefs[i] + '.html';
+            link.innerText = data.navBar.names[i];
+            if (i == 4) {
+                var holder = document.createElement('div');
+                for (var j = 0; j < 5; j++) {
+                    var span = document.createElement('a');
+                    span.href = data.pagination.hrefs[j] + '.html';
+                    span.innerText = data.pagination.names[j];
+                    holder.appendChild(span);
+                }
+                link.appendChild(holder);
+            }
+            div.appendChild(link);
+        }
+    }
+}).catch(function (e) {
+    return console.log(e);
+});
+
 if (document.title == "Home") {
     window.onload = (0, _slides.showSlides)();
 }
-
-var hamburger = document.getElementById('ham');
-hamburger.addEventListener('click', function () {
-    mySlideFunction();
-});
 
 var mySlideFunction = function mySlideFunction(evt) {
     var x = document.getElementById("myNavBar");
