@@ -20,6 +20,7 @@ body {
 .navBar {
     background-color: #333;
     overflow: hidden;
+    z-index: 1000;
 }
 
 .navBar a {
@@ -49,6 +50,7 @@ body {
 
 .infoContainer {
     display: flex;
+    z-index: -300;
 }
 
 .box {
@@ -78,6 +80,10 @@ body {
 
 .mySlides {
     display: none;
+}
+
+.slideImg{
+    z-index: -500;
 }
 
 .text {
@@ -192,31 +198,32 @@ body {
  }
  @media screen and (max-width: 550px) {
     
-    .navBar a:not(:first-child) {
-        display: none;
+     
+     .navBar a:not(:first-child) {
+         display: none;
+        }
+        .navBar a.icon {
+            float: right;
+            display: block;
     }
-    .navBar a.icon {
-        float: right;
-        display: block;
-    }
-
+    
     .navBar.responsive {
         position: absolute;
         width: 100%;
     }
-
+    
     .navBar.responsive .icon {
         position: absolute;
         right: 0;
         top: 0;
     }
-
+    
     .navBar.responsive a {
         float: none;
         display: block;
         text-align: left;
     }
-
+    
     .footer{
         font-size: 2vw;
     }
@@ -231,6 +238,10 @@ body {
     }
     .center {
         padding: 10px 0px;
+    }
+    .infoContainer{
+        height: 50%;
+        top: 50%;
     }
 }
 
